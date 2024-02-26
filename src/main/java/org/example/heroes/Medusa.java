@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Medusa {
+
+    public static void getInfoAboutMedusa() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/medusa").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutMedusaIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/medusa/counters/").get();

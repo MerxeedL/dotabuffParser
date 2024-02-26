@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bane {
+
+    public static void getInfoAboutBane() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/bane").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutBaneIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/bane/counters/").get();

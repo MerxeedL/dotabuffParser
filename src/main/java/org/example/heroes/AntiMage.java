@@ -10,6 +10,16 @@ import java.util.List;
 
 public class AntiMage {
 
+    public static void getInfoAboutAntiMage() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/anti-mage").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutAntiMageIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/anti-mage/counters/").get();

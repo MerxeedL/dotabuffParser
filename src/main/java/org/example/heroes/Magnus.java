@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Magnus {
+
+    public static void getInfoAboutMagnus() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/magnus").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutMagnusIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/magnus/counters/").get();

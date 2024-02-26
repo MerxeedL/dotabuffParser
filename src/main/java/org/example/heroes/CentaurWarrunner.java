@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CentaurWarrunner {
+
+    public static void getInfoAboutCentaurWarrunner() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/centaur-warrunner").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutCentaurWarrunnerIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/centaur-warrunner/counters/").get();

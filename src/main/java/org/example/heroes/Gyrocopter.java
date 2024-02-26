@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Gyrocopter {
+
+    public static void getInfoAboutGyrocopter() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/gyrocopter").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutGyrocopterIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/gyrocopter/counters/").get();

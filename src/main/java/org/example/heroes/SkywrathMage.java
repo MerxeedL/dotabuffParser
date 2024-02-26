@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SkywrathMage {
+
+    public static void getInfoAboutSkywrathMage() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/skywrath-mage").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutSkywrathMageIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/skywrath-mage/counters/").get();

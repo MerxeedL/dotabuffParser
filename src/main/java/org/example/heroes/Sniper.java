@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Sniper {
+
+    public static void getInfoAboutSniper() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/sniper").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutSniperIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/sniper/counters/").get();

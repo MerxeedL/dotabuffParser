@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CrystalMaiden {
+
+    public static void getInfoAboutCrystalMaiden() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/crystal-maiden").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutCrystalMaidenIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/crystal-maiden/counters/").get();

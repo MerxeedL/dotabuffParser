@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VengefulSpirit {
+
+    public static void getInfoAboutVengefulSpirit() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/vengeful-spirit").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutVengefulSpiritIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/vengeful-spirit/counters/").get();

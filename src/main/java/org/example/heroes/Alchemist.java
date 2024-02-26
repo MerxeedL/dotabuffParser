@@ -10,6 +10,16 @@ import java.util.List;
 
 public class Alchemist {
 
+    public static void getInfoAboutAlchemist() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/alchemist").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutAlchemistIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/alchemist/counters/").get();

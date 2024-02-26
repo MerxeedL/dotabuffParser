@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Jakiro {
+
+    public static void getInfoAboutJakiro() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/jakiro").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutJakiroIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/jakiro/counters/").get();

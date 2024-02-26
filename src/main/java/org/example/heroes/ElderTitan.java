@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ElderTitan {
+
+    public static void getInfoAboutElderTitan() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/elder-titan").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutElderTitanIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/elder-titan/counters/").get();

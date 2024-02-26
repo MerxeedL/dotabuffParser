@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Slark {
+
+    public static void getInfoAboutSlark() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/slark").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutSlarkIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/slark/counters/").get();

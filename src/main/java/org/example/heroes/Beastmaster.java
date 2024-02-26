@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Beastmaster {
+
+    public static void getInfoAboutBeastmaster() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/beastmaster").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutBeastmasterIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/beastmaster/counters/").get();

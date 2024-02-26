@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Morphling {
+
+    public static void getInfoAboutMorphling() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/morphling").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutMorphlingIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/morphling/counters/").get();

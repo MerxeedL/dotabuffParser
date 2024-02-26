@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShadowFiend {
+
+    public static void getInfoAboutShadowFiend() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/shadow-fiend").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutShadowFiendIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/shadow-fiend/counters/").get();

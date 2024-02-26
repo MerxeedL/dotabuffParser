@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BountyHunter {
+
+    public static void getInfoAboutBountyHunter() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/bounty-hunter").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutBountyHunterIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/bounty-hunter/counters/").get();

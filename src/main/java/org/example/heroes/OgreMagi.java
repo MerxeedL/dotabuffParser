@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OgreMagi {
+
+    public static void getInfoAboutOgreMagi() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/ogre-magi").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutOgreMagiIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/ogre-magi/counters/").get();

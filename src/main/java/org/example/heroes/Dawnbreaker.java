@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Dawnbreaker {
+
+    public static void getInfoAboutDawnbreaker() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/dawnbreaker").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutDawnbreakerIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/dawnbreaker/counters/").get();

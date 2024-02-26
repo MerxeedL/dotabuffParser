@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Lion {
+
+    public static void getInfoAboutLion() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/lion").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutLionIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/lion/counters/").get();

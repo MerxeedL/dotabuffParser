@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Grimstroke {
+
+    public static void getInfoAboutGrimstroke() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/grimstroke").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutGrimstrokeIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/grimstroke/counters/").get();

@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Dazzle {
+
+    public static void getInfoAboutDazzle() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/dazzle").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutDazzleIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/dazzle/counters/").get();

@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SandKing {
+
+    public static void getInfoAboutSandKing() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/sand-king").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutSandKingIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/sand-king/counters/").get();

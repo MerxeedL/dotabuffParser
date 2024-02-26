@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Doom {
+
+    public static void getInfoAboutDoom() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/doom").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutDoomIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/doom/counters/").get();

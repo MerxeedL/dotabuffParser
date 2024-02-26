@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Meepo {
+
+    public static void getInfoAboutMeepo() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/meepo").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutMeepoIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/meepo/counters/").get();

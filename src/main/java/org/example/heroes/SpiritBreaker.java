@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SpiritBreaker {
+
+    public static void getInfoAboutSpiritBreaker() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/spirit-breaker").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutSpiritBreakerIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/spirit-breaker/counters/").get();

@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Timbersaw {
+
+    public static void getInfoAboutTimbersaw() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/timbersaw").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutTimbersawIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/timbersaw/counters/").get();

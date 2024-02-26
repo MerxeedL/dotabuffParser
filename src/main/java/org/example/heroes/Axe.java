@@ -10,6 +10,16 @@ import java.util.List;
 
 public class Axe {
 
+    public static void getInfoAboutAxe() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/axe").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutAxeIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/axe/counters/").get();

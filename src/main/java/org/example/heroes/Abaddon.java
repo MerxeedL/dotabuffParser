@@ -11,6 +11,15 @@ import java.util.List;
 
 public class Abaddon {
 
+    public static void getInfoAboutAbaddon() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/abaddon").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
 
     public static void getInfoAboutAbaddonIsCounteredBy() throws IOException {
 
@@ -19,7 +28,7 @@ public class Abaddon {
         List<String> list = new ArrayList<>();
 
 
-            for (Element table : doc.select("table.sortable")) {
+        for (Element table : doc.select("table.sortable")) {
             for (Element row : table.select("td.cell-xlarge")) {
                 list.add(row.select("a").text());
             }

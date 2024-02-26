@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FacelessVoid {
+
+    public static void getInfoAboutFacelessVoid() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/faceless-void").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutFacelessVoidIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/faceless-void/counters/").get();

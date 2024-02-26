@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class KeeperOfTheLight {
+
+    public static void getInfoAboutKeeperOfThelight() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/keeper-of-the-light").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutKeeperOfTheLightIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/keeper-of-the-light/counters/").get();

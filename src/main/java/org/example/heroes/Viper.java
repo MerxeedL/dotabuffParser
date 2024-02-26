@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Viper {
+
+    public static void getInfoAboutViper() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/viper").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutViperIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/viper/counters/").get();

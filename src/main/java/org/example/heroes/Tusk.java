@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Tusk {
+
+    public static void getInfoAboutTusk() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/tusk").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutTuskIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/tusk/counters/").get();

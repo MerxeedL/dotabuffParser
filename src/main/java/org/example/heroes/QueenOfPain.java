@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QueenOfPain {
+
+    public static void getInfoAboutQueenOfPain() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/queen-of-pain").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutQueenOfPainIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/queen-of-pain/counters/").get();

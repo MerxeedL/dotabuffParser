@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Weaver {
+
+    public static void getInfoAboutWeaver() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/weaver").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutWeaverIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/weaver/counters/").get();

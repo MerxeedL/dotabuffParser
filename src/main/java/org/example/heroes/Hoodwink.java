@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Hoodwink {
+
+    public static void getInfoAboutHoodwink() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/hoodwink").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutHoodwinkIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/hoodwink/counters/").get();

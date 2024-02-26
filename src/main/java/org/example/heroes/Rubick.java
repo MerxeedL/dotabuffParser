@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Rubick {
+
+    public static void getInfoAboutRubick() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/rubick").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutRubickIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/rubick/counters/").get();

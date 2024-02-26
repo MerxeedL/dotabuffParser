@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Enchantress {
+
+    public static void getInfoAboutEnchantress() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/enchantress").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutEnchantressIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/enchantress/counters/").get();

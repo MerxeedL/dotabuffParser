@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Tinker {
+
+    public static void getInfoAboutTinker() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/tinker").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutTinkerIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/tinker/counters/").get();

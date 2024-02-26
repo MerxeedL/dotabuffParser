@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pugna {
+
+    public static void getInfoAboutPugna() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/pugna").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutPugnaIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/pugna/counters/").get();

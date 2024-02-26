@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Muerta {
+
+    public static void getInfoAboutMuerta() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/muerta").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutMuertaIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/muerta/counters/").get();

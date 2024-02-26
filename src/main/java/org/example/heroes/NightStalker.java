@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NightStalker {
+
+    public static void getInfoAboutNightStalker() throws IOException {
+        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/night-stalker").get();
+
+        for (Element table : doc.select("table.other")) {
+            for (Element row : table.select("td")) {
+                System.out.println(row.select("td").text());
+            }
+        }
+    }
+
     public static void getInfoAboutNightStalkerIsCounteredBy() throws IOException {
 
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/night-stalker/counters/").get();

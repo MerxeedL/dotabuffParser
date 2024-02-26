@@ -21,7 +21,6 @@ public class Alchemist {
     }
 
     public static void getInfoAboutAlchemistIsCounteredBy() throws IOException {
-
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/alchemist/counters/").get();
 
         List<String> list = new ArrayList<>();
@@ -52,5 +51,4 @@ public class Alchemist {
             System.out.println(list.get(i));
         }
     }
-
 }

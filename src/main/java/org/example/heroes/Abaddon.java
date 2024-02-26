@@ -11,8 +11,11 @@ import java.util.List;
 
 public class Abaddon {
 
+    private static final String URLHero = "https://www.dotabuff.com/heroes/abaddon";
+    private static final String URLHeroCounters = "https://www.dotabuff.com/heroes/abaddon/counters/";
+
     public static void getInfoAboutAbaddon() throws IOException {
-        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/abaddon").get();
+        Document doc = Jsoup.connect(URLHero).get();
 
         for (Element table : doc.select("table.other")) {
             for (Element row : table.select("td")) {
@@ -22,8 +25,7 @@ public class Abaddon {
     }
 
     public static void getInfoAboutAbaddonIsCounteredBy() throws IOException {
-
-        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/abaddon/counters/").get();
+        Document doc = Jsoup.connect(URLHeroCounters).get();
 
         List<String> list = new ArrayList<>();
 
@@ -39,7 +41,7 @@ public class Abaddon {
     }
 
     public static void getInfoAboutAbaddonCounters() throws IOException {
-        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/abaddon/counters/").get();
+        Document doc = Jsoup.connect(URLHeroCounters).get();
 
         List<String> list = new ArrayList<>();
 

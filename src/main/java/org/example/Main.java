@@ -1,6 +1,10 @@
 package org.example;
 
-import org.example.heroes.*;
+import org.example.heroes.agility.*;
+import org.example.heroes.intelligence.*;
+import org.example.heroes.strength.*;
+import org.example.heroes.universal.*;
+
 import java.io.IOException;
 
 public class Main {

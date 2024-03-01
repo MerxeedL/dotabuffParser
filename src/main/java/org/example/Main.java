@@ -4,6 +4,8 @@ import org.example.heroes.agility.*;
 import org.example.heroes.intelligence.*;
 import org.example.heroes.strength.*;
 import org.example.heroes.universal.*;
+import org.example.items.mainitems.attributesItems.Diadem;
+import org.example.items.mainitems.attributesItems.GauntletsOfStrength;
 import org.example.items.mainitems.consumablesItems.*;
 
 import java.io.IOException;
@@ -13,7 +15,14 @@ public class Main {
 
 
 //        ObserverWard.getInfoAboutObserverWard();
-        SentryWard.getInfoAboutSentryWard();
+//        SentryWard.getInfoAboutSentryWard();
+//        Diadem.getInfoAboutDiadem();
+//        Diadem.getInfoAboutDiademBuildsInto();
+//        Diadem.getInfoAboutDiademsCost();
+        GauntletsOfStrength.getInfoAboutGauntletsOfStrength();
+        GauntletsOfStrength.getInfoAboutGauntletsOfStrengthBuildsInto();
+        GauntletsOfStrength.getInfoAboutGauntletsOfStrengthCost();
+        GauntletsOfStrength.getInfoAboutChangelogs();
 //        Abaddon.getInfoAboutAbaddon();
 //        Abaddon.getInfoAboutAbaddonLanes();
 //        Abaddon.getInfoAboutAbaddonCounters();

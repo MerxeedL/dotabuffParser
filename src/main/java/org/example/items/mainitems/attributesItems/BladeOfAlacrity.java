@@ -9,17 +9,35 @@ import java.io.IOException;
 
 public class BladeOfAlacrity {
     private static final String URL = "https://dota2.fandom.com/ru/wiki/Blade_of_Alacrity";
+    private static final String URLDB = "https://www.dotabuff.com/items/blade-of-alacrity";
+
+    public static void getInfoAboutBladeOfAlacrityBuildsInto() throws IOException {
+
+        Document db = Jsoup.connect(URLDB).get();
+
+        System.out.println("Blade of alacrity можно собрать в следующие предметы: ");
+        for (Element table : db.select("div.order")) {
+            for (Element row : table.select("div.image-container.image-container-icon.image-container-item")) {
+                System.out.println(row.getElementsByAttribute("title").attr("title"));
+            }
+        }
+    }
+
     public static void getInfoAboutChangelogs() throws IOException {
 
         Document doc = Jsoup.connect(URL).get();
 
         Elements entries = doc.select(".updatetablebody #entry");
 
+        System.out.println("Item Blade of alacrity");
+
         for (Element entry: entries) {
             Element version = entry.selectFirst("#version");
+            assert version != null;
             String versionText = version.text();
 
             Element description = entry.selectFirst("#description");
+            assert description != null;
             String descriptionText = description.text();
 
             System.out.println("Version: " + versionText);

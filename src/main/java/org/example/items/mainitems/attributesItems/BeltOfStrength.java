@@ -9,17 +9,35 @@ import java.io.IOException;
 
 public class BeltOfStrength {
     private static final String URL = "https://dota2.fandom.com/ru/wiki/Belt_of_Strength";
+    private static final String URLDB = "https://www.dotabuff.com/items/belt-of-strength";
+
+    public static void getInfoAboutBeltOfStrengthBuildsInto() throws IOException {
+
+        Document db = Jsoup.connect(URLDB).get();
+
+        System.out.println("Belt of strength можно собрать в следующие предметы: ");
+        for (Element table : db.select("div.order")) {
+            for (Element row : table.select("div.image-container.image-container-icon.image-container-item")) {
+                System.out.println(row.getElementsByAttribute("title").attr("title"));
+            }
+        }
+    }
+
     public static void getInfoAboutChangelogs() throws IOException {
 
         Document doc = Jsoup.connect(URL).get();
 
         Elements entries = doc.select(".updatetablebody #entry");
 
+        System.out.println("Item Belt of strength");
+
         for (Element entry: entries) {
             Element version = entry.selectFirst("#version");
+            assert version != null;
             String versionText = version.text();
 
             Element description = entry.selectFirst("#description");
+            assert description != null;
             String descriptionText = description.text();
 
             System.out.println("Version: " + versionText);

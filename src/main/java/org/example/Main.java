@@ -4,8 +4,7 @@ import org.example.heroes.agility.*;
 import org.example.heroes.intelligence.*;
 import org.example.heroes.strength.*;
 import org.example.heroes.universal.*;
-import org.example.items.mainitems.attributesItems.Diadem;
-import org.example.items.mainitems.attributesItems.GauntletsOfStrength;
+import org.example.items.mainitems.attributesItems.*;
 import org.example.items.mainitems.consumablesItems.*;
 import org.example.items.mainitems.secretShopItems.UltimateOrb;
 
@@ -14,18 +13,36 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-
-//        ObserverWard.getInfoAboutObserverWard();
-//        SentryWard.getInfoAboutSentryWard();
+        PhantomLancer.getInfoAboutChangelogs();
 //        Diadem.getInfoAboutDiadem();
-//        Diadem.getInfoAboutDiademBuildsInto();
 //        Diadem.getInfoAboutDiademsCost();
-//        GauntletsOfStrength.getInfoAboutGauntletsOfStrength();
-//        GauntletsOfStrength.getInfoAboutGauntletsOfStrengthBuildsInto();
-//        GauntletsOfStrength.getInfoAboutGauntletsOfStrengthCost();
-//        GauntletsOfStrength.getInfoAboutChangelogs();
+//        Diadem.getInfoAboutDiademBuildsInto();
 //        Diadem.getInfoAboutChangelogs();
-        UltimateOrb.getInfoAboutChangelogs();
+//        BandOfElvenskin.getInfoAboutBandOfElvenskinBuildsInto();
+//        BeltOfStrength.getInfoAboutBeltOfStrengthBuildsInto();
+//        BladeOfAlacrity.getInfoAboutBladeOfAlacrityBuildsInto();
+//        Circlet.getInfoAboutCircletBuildsInto();
+//        Crown.getInfoAboutCrownBuildsInto();
+//        Diadem.getInfoAboutDiademBuildsInto();
+//        GauntletsOfStrength.getInfoAboutGauntletsOfStrengthBuildsInto();
+//        IronBranch.getInfoAboutIronBranchBuildsInto();
+//        MantleOfIntelligence.getInfoAboutMantleOfIntelligenceBuildsInto();
+//        OgreAxe.getInfoAboutOgreAxeBuildsInto();
+//        RobeOfTheMagi.getInfoAboutRobeOfTheMagiBuildsInto();
+//        SlippersOfAgility.getInfoAboutSlippersOfAgilityBuildsInto();
+//        StaffOfWizardy.getInfoAboutStaffOfWizardryBuildsInto();
+//        BandOfElvenskin.getInfoAboutChangelogs();
+//        BeltOfStrength.getInfoAboutChangelogs();
+//        BladeOfAlacrity.getInfoAboutChangelogs();
+//        Circlet.getInfoAboutChangelogs();
+//        Crown.getInfoAboutChangelogs();
+//        IronBranch.getInfoAboutChangelogs();
+//        MantleOfIntelligence.getInfoAboutChangelogs();
+//        OgreAxe.getInfoAboutChangelogs();
+//        GauntletsOfStrength.getInfoAboutChangelogs();
+//        RobeOfTheMagi.getInfoAboutChangelogs();
+//        SlippersOfAgility.getInfoAboutChangelogs();
+//        StaffOfWizardy.getInfoAboutChangelogs();
 //        Abaddon.getInfoAboutAbaddon();
 //        Abaddon.getInfoAboutAbaddonLanes();
 //        Abaddon.getInfoAboutAbaddonCounters();

@@ -9,17 +9,36 @@ import java.io.IOException;
 
 public class BandOfElvenskin {
     private static final String URL = "https://dota2.fandom.com/ru/wiki/Band_of_Elvenskin";
+    private static final String URLDB = "https://www.dotabuff.com/items/band-of-elvenskin";
+
+    public static void getInfoAboutBandOfElvenskinBuildsInto() throws IOException {
+
+        Document db = Jsoup.connect(URLDB).get();
+
+        System.out.println("Band of elvenskin можно собрать в следующие предметы: ");
+        for (Element table : db.select("div.order")) {
+            for (Element row : table.select("div.image-container.image-container-icon.image-container-item")) {
+                System.out.println(row.getElementsByAttribute("title").attr("title"));
+            }
+        }
+    }
+
     public static void getInfoAboutChangelogs() throws IOException {
 
         Document doc = Jsoup.connect(URL).get();
 
         Elements entries = doc.select(".updatetablebody #entry");
 
+
+        System.out.println("Item Band Of Elvenskin");
+
         for (Element entry: entries) {
             Element version = entry.selectFirst("#version");
+            assert version != null;
             String versionText = version.text();
 
             Element description = entry.selectFirst("#description");
+            assert description != null;
             String descriptionText = description.text();
 
             System.out.println("Version: " + versionText);

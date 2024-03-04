@@ -51,11 +51,15 @@ public class Diadem {
 
         Elements entries = doc.select(".updatetablebody #entry");
 
+        System.out.println("Item Diadem");
+
         for (Element entry: entries) {
             Element version = entry.selectFirst("#version");
+            assert version != null;
             String versionText = version.text();
 
             Element description = entry.selectFirst("#description");
+            assert description != null;
             String descriptionText = description.text();
 
             System.out.println("Version: " + versionText);

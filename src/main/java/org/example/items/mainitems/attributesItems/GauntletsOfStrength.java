@@ -3,8 +3,10 @@ package org.example.items.mainitems.attributesItems;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class GauntletsOfStrength {
 
@@ -47,16 +49,17 @@ public class GauntletsOfStrength {
 
         Document doc = Jsoup.connect(URL).get();
 
-//        for (Element table : doc.select("div.updatetablebody")) {
-//            System.out.println(table.getElementsByAttribute("title").attr("title"));
-//            for (Element row : table.select("ul")) {
-//                System.out.println(row.select("li").text().replaceAll("\\.", ""));
-//            }
-//        }
+        Elements entries = doc.select(".updatetablebody #entry");
 
-        for (Element table : doc.select("div.updatetablebody")) {
-            System.out.println(table.getElementsByAttribute("title").attr("title"));
+        for (Element entry: entries) {
+            Element version = entry.selectFirst("#version");
+            String versionText = version.text();
+
+            Element description = entry.selectFirst("#description");
+            String descriptionText = description.text();
+
+            System.out.println("Version: " + versionText);
+            System.out.println("Description: " + descriptionText);
         }
     }
-
 }

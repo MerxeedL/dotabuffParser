@@ -7,6 +7,7 @@ import org.example.heroes.universal.*;
 import org.example.items.mainitems.attributesItems.Diadem;
 import org.example.items.mainitems.attributesItems.GauntletsOfStrength;
 import org.example.items.mainitems.consumablesItems.*;
+import org.example.items.mainitems.secretShopItems.UltimateOrb;
 
 import java.io.IOException;
 
@@ -19,10 +20,12 @@ public class Main {
 //        Diadem.getInfoAboutDiadem();
 //        Diadem.getInfoAboutDiademBuildsInto();
 //        Diadem.getInfoAboutDiademsCost();
-        GauntletsOfStrength.getInfoAboutGauntletsOfStrength();
-        GauntletsOfStrength.getInfoAboutGauntletsOfStrengthBuildsInto();
-        GauntletsOfStrength.getInfoAboutGauntletsOfStrengthCost();
-        GauntletsOfStrength.getInfoAboutChangelogs();
+//        GauntletsOfStrength.getInfoAboutGauntletsOfStrength();
+//        GauntletsOfStrength.getInfoAboutGauntletsOfStrengthBuildsInto();
+//        GauntletsOfStrength.getInfoAboutGauntletsOfStrengthCost();
+//        GauntletsOfStrength.getInfoAboutChangelogs();
+//        Diadem.getInfoAboutChangelogs();
+        UltimateOrb.getInfoAboutChangelogs();
 //        Abaddon.getInfoAboutAbaddon();
 //        Abaddon.getInfoAboutAbaddonLanes();
 //        Abaddon.getInfoAboutAbaddonCounters();

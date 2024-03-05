@@ -53,7 +53,7 @@ public class Diadem {
 
         System.out.println("Item Diadem");
 
-        for (Element entry: entries) {
+        for (Element entry : entries) {
             Element version = entry.selectFirst("#version");
             assert version != null;
             String versionText = version.text();
@@ -66,5 +66,4 @@ public class Diadem {
             System.out.println("Description: " + descriptionText);
         }
     }
-
 }

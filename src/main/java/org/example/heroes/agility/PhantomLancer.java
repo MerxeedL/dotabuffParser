@@ -5,20 +5,21 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.FilterOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class PhantomLancer {
 
-    private static final String URLLogs = "https://dota2.fandom.com/ru/wiki/Phantom_Lancer/%D0%98%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F";
-    private static final String URLTalents = "https://dota2.fandom.com/ru/wiki/Phantom_Lancer/%D0%A2%D0%B0%D0%BB%D0%B0%D0%BD%D1%82%D1%8B";
+    private static final String URLLogs = "https://dota2.fandom.com/ru/wiki/Phantom_Lancer/Изменения";
+    private static final String URLTalents = "https://dota2.fandom.com/ru/wiki/Phantom_Lancer/Таланты";
+    private static final String URLCounters = "https://www.dotabuff.com/heroes/phantom-lancer/counters/";
+    private static final String URLHero = "https://www.dotabuff.com/heroes/phantom-lancer";
+    private static final String URLAbilities = "https://www.dotabuff.com/heroes/phantom-lancer/abilities";
 
 
     public static void getInfoAboutPhantomLancer() throws IOException {
-        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/phantom-lancer").get();
+        Document doc = Jsoup.connect(URLHero).get();
 
         for (Element table : doc.select("table.other")) {
             for (Element row : table.select("td")) {
@@ -29,7 +30,7 @@ public class PhantomLancer {
 
     public static void getInfoAboutPhantomLancerIsCounteredBy() throws IOException {
 
-        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/phantom-lancer/counters/").get();
+        Document doc = Jsoup.connect(URLCounters).get();
 
         List<String> list = new ArrayList<>();
 
@@ -45,7 +46,7 @@ public class PhantomLancer {
     }
 
     public static void getInfoAboutPhantomLancerCounters() throws IOException {
-        Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/phantom-lancer/counters/").get();
+        Document doc = Jsoup.connect(URLCounters).get();
 
         List<String> list = new ArrayList<>();
 
@@ -60,6 +61,116 @@ public class PhantomLancer {
         }
     }
 
+    public static void getInfoAboutPhantomLancerFirstAbility() throws IOException {
+
+        Document doc = Jsoup.connect(URLAbilities).get();
+        Element firstSpell = doc.selectFirst(".stats");
+
+        if (firstSpell != null) {
+            System.out.println(doc.selectFirst("header").text().toUpperCase().replaceAll("Q", ""));
+            Elements entries = firstSpell.select("div.stat.effect");
+
+            for (Element entry : entries) {
+
+                Element label = entry.selectFirst("span.label");
+                assert label != null;
+                String labelText = label.text();
+
+                Element values = entry.selectFirst("span.values");
+                assert values != null;
+                String valueText = values.text();
+                System.out.println(labelText + " " + valueText);
+            }
+        }
+    }
+
+    public static void getInfoAboutPhantomLancerSecondAbility() throws IOException {
+
+        Document doc = Jsoup.connect(URLAbilities).get();
+        Elements stats = doc.select(".stats");
+
+        if (stats.size() >= 2) {
+
+            System.out.println(doc.getElementsByTag("header").get(1).text().toUpperCase().replaceAll("W", ""));
+            Element secondSpell = stats.get(1);
+            Elements entries = secondSpell.select("div.stat.effect");
+
+
+            for (Element entry : entries) {
+
+                Element label = entry.selectFirst("span.label");
+                assert label != null;
+                String labelText = label.text();
+
+                Element values = entry.selectFirst("span.values");
+                assert values != null;
+                String valueText = values.text();
+
+                System.out.println(labelText + " " + valueText);
+            }
+        }
+    }
+
+    public static void getInfoAboutPhantomLancerThirdAbility() throws IOException {
+
+        Document doc = Jsoup.connect(URLAbilities).get();
+        Elements stats = doc.select(".stats");
+
+        if (stats.size() >= 3) {
+
+            System.out.println(doc.getElementsByTag("header").get(2).text().toUpperCase().replaceAll("E", ""));
+            Element secondSpell = stats.get(2);
+            Elements entries = secondSpell.select("div.stat.effect");
+
+
+            for (Element entry : entries) {
+
+                Element label = entry.selectFirst("span.label");
+                assert label != null;
+                String labelText = label.text();
+
+                Element values = entry.selectFirst("span.values");
+                assert values != null;
+                String valueText = values.text();
+
+                System.out.println(labelText + " " + valueText);
+            }
+        }
+    }
+
+    public static void getInfoAboutPhantomLancerUltimateAbility() throws IOException {
+
+        Document doc = Jsoup.connect(URLAbilities).get();
+        Elements stats = doc.select(".stats");
+
+        if (stats.size() >= 4) {
+
+            System.out.println(doc.getElementsByTag("header")
+                    .get(3)
+                    .text()
+                    .toUpperCase()
+                    .replaceAll("R", ""));
+
+            Element secondSpell = stats.get(3);
+            Elements entries = secondSpell.select("div.stat.effect");
+
+
+            for (Element entry : entries) {
+
+                Element label = entry.selectFirst("span.label");
+                assert label != null;
+                String labelText = label.text();
+
+                Element values = entry.selectFirst("span.values");
+                assert values != null;
+                String valueText = values.text();
+
+                System.out.println(labelText + " " + valueText);
+            }
+        }
+    }
+
+
     public static void getInfoAboutPhantomLancerChangelogs() throws IOException {
 
         Document doc = Jsoup.connect(URLLogs).get();
@@ -69,8 +180,8 @@ public class PhantomLancer {
         if (updatetablebodyElements != null) {
             Elements entries = updatetablebodyElements.select("#entry");
             for (Element entry : entries) {
-                Element version = entry.selectFirst("#version");
 
+                Element version = entry.selectFirst("#version");
                 String versionText = version.text();
 
                 Element description = entry.selectFirst("#description");
@@ -92,6 +203,7 @@ public class PhantomLancer {
             Elements entries = secondUpdatetablebody.select("#entry");
 
             for (Element entry : entries) {
+
                 Element patch = entry.selectFirst("#patch");
                 String patchText = patch.text();
 
@@ -119,5 +231,3 @@ public class PhantomLancer {
         }
     }
 }
-
-

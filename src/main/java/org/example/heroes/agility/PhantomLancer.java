@@ -61,26 +61,36 @@ public class PhantomLancer {
         }
     }
 
+    private static void Ability(Element ability) {
+        Elements entries = ability.select("div.stat.effect");
+
+        for (Element entry : entries) {
+
+            Element label = entry.selectFirst("span.label");
+            assert label != null;
+            String labelText = label.text();
+
+            Element values = entry.selectFirst("span.values");
+            assert values != null;
+            String valueText = values.text();
+
+            System.out.println(labelText + " " + valueText);
+        }
+    }
+
     public static void getInfoAboutPhantomLancerFirstAbility() throws IOException {
 
         Document doc = Jsoup.connect(URLAbilities).get();
-        Element firstSpell = doc.selectFirst(".stats");
+        Element firstAbility = doc.selectFirst(".stats");
 
-        if (firstSpell != null) {
-            System.out.println(doc.selectFirst("header").text().toUpperCase().replaceAll("Q", ""));
-            Elements entries = firstSpell.select("div.stat.effect");
+        if (firstAbility != null) {
 
-            for (Element entry : entries) {
+            System.out.println(doc.selectFirst("header")
+                    .text()
+                    .toUpperCase()
+                    .replaceAll("Q", ""));
 
-                Element label = entry.selectFirst("span.label");
-                assert label != null;
-                String labelText = label.text();
-
-                Element values = entry.selectFirst("span.values");
-                assert values != null;
-                String valueText = values.text();
-                System.out.println(labelText + " " + valueText);
-            }
+            Ability(firstAbility);
         }
     }
 
@@ -91,23 +101,14 @@ public class PhantomLancer {
 
         if (stats.size() >= 2) {
 
-            System.out.println(doc.getElementsByTag("header").get(1).text().toUpperCase().replaceAll("W", ""));
-            Element secondSpell = stats.get(1);
-            Elements entries = secondSpell.select("div.stat.effect");
+            System.out.println(doc.getElementsByTag("header")
+                    .get(1)
+                    .text()
+                    .toUpperCase()
+                    .replaceAll("W", ""));
 
-
-            for (Element entry : entries) {
-
-                Element label = entry.selectFirst("span.label");
-                assert label != null;
-                String labelText = label.text();
-
-                Element values = entry.selectFirst("span.values");
-                assert values != null;
-                String valueText = values.text();
-
-                System.out.println(labelText + " " + valueText);
-            }
+            Element SecondAbility = stats.get(1);
+            Ability(SecondAbility);
         }
     }
 
@@ -118,23 +119,14 @@ public class PhantomLancer {
 
         if (stats.size() >= 3) {
 
-            System.out.println(doc.getElementsByTag("header").get(2).text().toUpperCase().replaceAll("E", ""));
-            Element secondSpell = stats.get(2);
-            Elements entries = secondSpell.select("div.stat.effect");
+            System.out.println(doc.getElementsByTag("header")
+                    .get(2)
+                    .text()
+                    .toUpperCase()
+                    .replaceAll("E", ""));
 
-
-            for (Element entry : entries) {
-
-                Element label = entry.selectFirst("span.label");
-                assert label != null;
-                String labelText = label.text();
-
-                Element values = entry.selectFirst("span.values");
-                assert values != null;
-                String valueText = values.text();
-
-                System.out.println(labelText + " " + valueText);
-            }
+            Element ThirdAbility = stats.get(2);
+            Ability(ThirdAbility);
         }
     }
 
@@ -151,25 +143,10 @@ public class PhantomLancer {
                     .toUpperCase()
                     .replaceAll("R", ""));
 
-            Element secondSpell = stats.get(3);
-            Elements entries = secondSpell.select("div.stat.effect");
-
-
-            for (Element entry : entries) {
-
-                Element label = entry.selectFirst("span.label");
-                assert label != null;
-                String labelText = label.text();
-
-                Element values = entry.selectFirst("span.values");
-                assert values != null;
-                String valueText = values.text();
-
-                System.out.println(labelText + " " + valueText);
-            }
+            Element UltimateAbility = stats.get(3);
+            Ability(UltimateAbility);
         }
     }
-
 
     public static void getInfoAboutPhantomLancerChangelogs() throws IOException {
 

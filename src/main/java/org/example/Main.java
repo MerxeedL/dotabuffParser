@@ -13,6 +13,7 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException {
 
+
         PhantomLancer.getInfoAboutPhantomLancerFirstAbility();
         PhantomLancer.getInfoAboutPhantomLancerSecondAbility();
         PhantomLancer.getInfoAboutPhantomLancerThirdAbility();

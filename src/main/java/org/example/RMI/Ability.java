@@ -7,13 +7,13 @@ public class Ability {
 
     public static void getAbility(Element ability, Element cooldownAbility, Element manacostAbility, Element descriptionAbility, Element lore) {
 
-        Elements entriesAbilityStats = ability.select("div.stat.effect");
+        Elements entriesAbility = ability.select("div.stat.effect");
         Elements entriesCooldown = cooldownAbility.select("div.cooldown.align-icon");
         Elements entriesManacost = manacostAbility.select("div.manacost.align-icon");
         Elements entriesDescription = descriptionAbility.select("div.description");
         Elements entriesLore = lore.select("div.lore");
 
-        for (Element entry : entriesAbilityStats) {
+        for (Element entry : entriesAbility) {
 
             Element label = entry.selectFirst("span.label");
             assert label != null;
@@ -45,13 +45,10 @@ public class Ability {
 
                 System.out.println("MANACOST: " + manacostText);
 
-                /*
-                Добавить реализацию возможности вывода манакоста нуля, если способность не имеет использования маны
-
                 if (manacost.isEmpty()) {
                     System.out.println("MANACOST: 0");
                 }
-                */
+
 
             }
         }

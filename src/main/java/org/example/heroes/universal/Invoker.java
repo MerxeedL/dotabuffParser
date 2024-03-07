@@ -3,13 +3,16 @@ package org.example.heroes.universal;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Invoker {
+import static org.example.RMI.Ability.getAbility;
 
+public class Invoker {
+    private static final String URLAbilities = "https://www.dotabuff.com/heroes/invoker/abilities";
     public static void getInfoAboutInvoker() throws IOException {
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/invoker").get();
 

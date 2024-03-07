@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.example.RMI.Ability.getAbility;
+
 public class PhantomLancer {
 
     private static final String URLLogs = "https://dota2.fandom.com/ru/wiki/Phantom_Lancer/Изменения";
@@ -16,7 +18,6 @@ public class PhantomLancer {
     private static final String URLCounters = "https://www.dotabuff.com/heroes/phantom-lancer/counters/";
     private static final String URLHero = "https://www.dotabuff.com/heroes/phantom-lancer";
     private static final String URLAbilities = "https://www.dotabuff.com/heroes/phantom-lancer/abilities";
-
 
     public static void getInfoAboutPhantomLancer() throws IOException {
         Document doc = Jsoup.connect(URLHero).get();
@@ -61,36 +62,31 @@ public class PhantomLancer {
         }
     }
 
-    private static void Ability(Element ability) {
-        Elements entries = ability.select("div.stat.effect");
-
-        for (Element entry : entries) {
-
-            Element label = entry.selectFirst("span.label");
-            assert label != null;
-            String labelText = label.text();
-
-            Element values = entry.selectFirst("span.values");
-            assert values != null;
-            String valueText = values.text();
-
-            System.out.println(labelText + " " + valueText);
-        }
-    }
-
     public static void getInfoAboutPhantomLancerFirstAbility() throws IOException {
 
         Document doc = Jsoup.connect(URLAbilities).get();
         Element firstAbility = doc.selectFirst(".stats");
+        Element firstAbilityCooldown = doc.selectFirst(".cooldown_and_cost");
+        Element firstAbilityManacost = doc.selectFirst(".cooldown_and_cost");
+        Element firstAbilityDescription = doc.selectFirst(".description");
+        Element firstAbilityLore = doc.selectFirst(".lore");
 
         if (firstAbility != null) {
 
+            for (Element big : doc.getElementsByTag("big")) {
+                big.remove();
+            }
+
             System.out.println(doc.selectFirst("header")
                     .text()
-                    .toUpperCase()
-                    .replaceAll("Q", ""));
+                    .toUpperCase());
 
-            Ability(firstAbility);
+            assert firstAbilityCooldown != null;
+            assert firstAbilityManacost != null;
+            assert firstAbilityDescription != null;
+            assert firstAbilityLore != null;
+
+            getAbility(firstAbility, firstAbilityCooldown, firstAbilityManacost, firstAbilityDescription, firstAbilityLore);
         }
     }
 
@@ -98,17 +94,28 @@ public class PhantomLancer {
 
         Document doc = Jsoup.connect(URLAbilities).get();
         Elements stats = doc.select(".stats");
+        Elements cooldown = doc.select(".cooldown_and_cost");
+        Elements manacost = doc.select(".cooldown_and_cost");
+        Elements description = doc.select(".description");
+        Elements lore = doc.select(".lore");
 
         if (stats.size() >= 2) {
+
+            for (Element big : doc.getElementsByTag("big")) {
+                big.remove();
+            }
 
             System.out.println(doc.getElementsByTag("header")
                     .get(1)
                     .text()
-                    .toUpperCase()
-                    .replaceAll("W", ""));
+                    .toUpperCase());
 
-            Element SecondAbility = stats.get(1);
-            Ability(SecondAbility);
+            Element secondAbility = stats.get(1);
+            Element secondAbilityCooldown = cooldown.get(1);
+            Element secondAbilityManacost = manacost.get(1);
+            Element secondAbilityDescription = description.get(1);
+            Element secondAbilityLore = lore.get(1);
+            getAbility(secondAbility, secondAbilityCooldown, secondAbilityManacost, secondAbilityDescription, secondAbilityLore);
         }
     }
 
@@ -116,17 +123,28 @@ public class PhantomLancer {
 
         Document doc = Jsoup.connect(URLAbilities).get();
         Elements stats = doc.select(".stats");
+        Elements cooldown = doc.select(".cooldown_and_cost");
+        Elements manacost = doc.select(".cooldown_and_cost");
+        Elements description = doc.select(".description");
+        Elements lore = doc.select(".lore");
 
         if (stats.size() >= 3) {
+
+            for (Element big : doc.getElementsByTag("big")) {
+                big.remove();
+            }
 
             System.out.println(doc.getElementsByTag("header")
                     .get(2)
                     .text()
-                    .toUpperCase()
-                    .replaceAll("E", ""));
+                    .toUpperCase());
 
-            Element ThirdAbility = stats.get(2);
-            Ability(ThirdAbility);
+            Element thirdAbility = stats.get(2);
+            Element thirdAbilityCooldown = cooldown.get(2);
+            Element thirdAbilityManacost = manacost.get(2);
+            Element thirdAbilityDescription = description.get(2);
+            Element thirdAbilityLore = lore.get(2);
+            getAbility(thirdAbility, thirdAbilityCooldown, thirdAbilityManacost, thirdAbilityDescription, thirdAbilityLore);
         }
     }
 
@@ -134,17 +152,28 @@ public class PhantomLancer {
 
         Document doc = Jsoup.connect(URLAbilities).get();
         Elements stats = doc.select(".stats");
+        Elements cooldown = doc.select(".cooldown_and_cost");
+        Elements manacost = doc.select(".cooldown_and_cost");
+        Elements description = doc.select(".description");
+        Elements lore = doc.select(".lore");
 
         if (stats.size() >= 4) {
+
+            for (Element big : doc.getElementsByTag("big")) {
+                big.remove();
+            }
 
             System.out.println(doc.getElementsByTag("header")
                     .get(3)
                     .text()
-                    .toUpperCase()
-                    .replaceAll("R", ""));
+                    .toUpperCase());
 
-            Element UltimateAbility = stats.get(3);
-            Ability(UltimateAbility);
+            Element ultimateAbility = stats.get(3);
+            Element ultimateAbilityCooldown = cooldown.get(3);
+            Element ultimateAbilityManacost = manacost.get(3);
+            Element ultimateAbilityDescription = description.get(3);
+            Element ultimateAbilityLore = lore.get(3);
+            getAbility(ultimateAbility, ultimateAbilityCooldown, ultimateAbilityManacost, ultimateAbilityDescription, ultimateAbilityLore);
         }
     }
 

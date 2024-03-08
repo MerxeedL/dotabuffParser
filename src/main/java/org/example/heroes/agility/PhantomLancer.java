@@ -65,6 +65,7 @@ public class PhantomLancer {
     public static void getInfoAboutPhantomLancerFirstAbility() throws IOException {
 
         Document doc = Jsoup.connect(URLAbilities).get();
+        Element firstAbilityEffect = doc.selectFirst(".effects");
         Element firstAbility = doc.selectFirst(".stats");
         Element firstAbilityCooldown = doc.selectFirst(".cooldown_and_cost");
         Element firstAbilityManacost = doc.selectFirst(".cooldown_and_cost");
@@ -86,13 +87,14 @@ public class PhantomLancer {
             assert firstAbilityDescription != null;
             assert firstAbilityLore != null;
 
-            getAbility(firstAbility, firstAbilityCooldown, firstAbilityManacost, firstAbilityDescription, firstAbilityLore);
+            getAbility(firstAbilityEffect, firstAbility, firstAbilityCooldown, firstAbilityManacost, firstAbilityDescription, firstAbilityLore);
         }
     }
 
     public static void getInfoAboutPhantomLancerSecondAbility() throws IOException {
 
         Document doc = Jsoup.connect(URLAbilities).get();
+        Elements effects = doc.select(".effects");
         Elements stats = doc.select(".stats");
         Elements cooldown = doc.select(".cooldown_and_cost");
         Elements manacost = doc.select(".cooldown_and_cost");
@@ -110,18 +112,20 @@ public class PhantomLancer {
                     .text()
                     .toUpperCase());
 
+            Element secondEffects = effects.get(1);
             Element secondAbility = stats.get(1);
             Element secondAbilityCooldown = cooldown.get(1);
             Element secondAbilityManacost = manacost.get(1);
             Element secondAbilityDescription = description.get(1);
             Element secondAbilityLore = lore.get(1);
-            getAbility(secondAbility, secondAbilityCooldown, secondAbilityManacost, secondAbilityDescription, secondAbilityLore);
+            getAbility(secondEffects, secondAbility, secondAbilityCooldown, secondAbilityManacost, secondAbilityDescription, secondAbilityLore);
         }
     }
 
     public static void getInfoAboutPhantomLancerThirdAbility() throws IOException {
 
         Document doc = Jsoup.connect(URLAbilities).get();
+        Elements effects = doc.select(".effects");
         Elements stats = doc.select(".stats");
         Elements cooldown = doc.select(".cooldown_and_cost");
         Elements manacost = doc.select(".cooldown_and_cost");
@@ -139,18 +143,20 @@ public class PhantomLancer {
                     .text()
                     .toUpperCase());
 
+            Element thirdEffects = effects.get(2);
             Element thirdAbility = stats.get(2);
             Element thirdAbilityCooldown = cooldown.get(2);
             Element thirdAbilityManacost = manacost.get(2);
             Element thirdAbilityDescription = description.get(2);
             Element thirdAbilityLore = lore.get(2);
-            getAbility(thirdAbility, thirdAbilityCooldown, thirdAbilityManacost, thirdAbilityDescription, thirdAbilityLore);
+            getAbility(thirdEffects, thirdAbility, thirdAbilityCooldown, thirdAbilityManacost, thirdAbilityDescription, thirdAbilityLore);
         }
     }
 
     public static void getInfoAboutPhantomLancerUltimateAbility() throws IOException {
 
         Document doc = Jsoup.connect(URLAbilities).get();
+        Elements effects = doc.select(".effects");
         Elements stats = doc.select(".stats");
         Elements cooldown = doc.select(".cooldown_and_cost");
         Elements manacost = doc.select(".cooldown_and_cost");
@@ -168,12 +174,13 @@ public class PhantomLancer {
                     .text()
                     .toUpperCase());
 
+            Element ultimateAbilityEffects = effects.get(3);
             Element ultimateAbility = stats.get(3);
             Element ultimateAbilityCooldown = cooldown.get(3);
             Element ultimateAbilityManacost = manacost.get(3);
             Element ultimateAbilityDescription = description.get(3);
             Element ultimateAbilityLore = lore.get(3);
-            getAbility(ultimateAbility, ultimateAbilityCooldown, ultimateAbilityManacost, ultimateAbilityDescription, ultimateAbilityLore);
+            getAbility(ultimateAbilityEffects, ultimateAbility, ultimateAbilityCooldown, ultimateAbilityManacost, ultimateAbilityDescription, ultimateAbilityLore);
         }
     }
 

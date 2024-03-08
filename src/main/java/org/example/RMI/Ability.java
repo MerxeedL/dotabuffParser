@@ -5,8 +5,9 @@ import org.jsoup.select.Elements;
 
 public class Ability {
 
-    public static void getAbility(Element ability, Element cooldownAbility, Element manacostAbility, Element descriptionAbility, Element lore) {
+    public static void getAbility(Element effects, Element ability, Element cooldownAbility, Element manacostAbility, Element descriptionAbility, Element lore) {
 
+        Elements entriesEffects = effects.select(".effects");
         Elements entriesAbility = ability.select("div.stat.effect");
         Elements entriesCooldown = cooldownAbility.select("div.cooldown.align-icon");
         Elements entriesManacost = manacostAbility.select("div.manacost.align-icon");
@@ -71,6 +72,21 @@ public class Ability {
             System.out.println("ABILITY LORE: " + loreInfoText);
         }
 
+        for (Element entry : entriesEffects) {
+
+            for (Element table : entry.select("p")) {
+                Elements effect = table.select("p");
+
+                String effectText = effect
+                        .text()
+                        .replaceAll("\\:" , ": ")
+                        .toUpperCase();
+
+                System.out.println(effectText);
+            }
+
+
+        }
 
     }
 }

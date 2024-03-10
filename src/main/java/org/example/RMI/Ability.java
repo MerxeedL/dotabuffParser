@@ -11,7 +11,7 @@ public class Ability {
         Elements entriesAbility = ability.select("div.stat.effect");
         Elements entriesCooldown = cooldownAbility.select("div.cooldown.align-icon");
         Elements entriesManacost = manacostAbility.select("div.manacost.align-icon");
-        Elements entriesNote = manacostAbility.select(".notes");
+        Elements entriesNote = notes.select(".notes");
         Elements entriesDescription = descriptionAbility.select("div.description");
         Elements entriesLore = lore.select("div.lore");
 
@@ -22,7 +22,7 @@ public class Ability {
 
                 String effectText = effect
                         .text()
-                        .replaceAll("\\:" , ": ")
+                        .replaceAll("\\:", ": ")
                         .toUpperCase();
 
                 System.out.println(effectText);
@@ -44,8 +44,8 @@ public class Ability {
 
         for (Element entry : entriesCooldown) {
 
-            for (Element test : entry.select("span.value")) {
-                Elements cooldown = test.select("span.number");
+            for (Element tableCooldown : entry.select("span.value")) {
+                Elements cooldown = tableCooldown.select("span.number");
                 String cooldownText = cooldown.text().replaceAll(" ", " \\/ ");
 
                 System.out.println("COOLDOWN: " + cooldownText);
@@ -55,8 +55,8 @@ public class Ability {
 
         for (Element entry : entriesManacost) {
 
-            for (Element test : entry.select("span.value")) {
-                Elements manacost = test.select("span.number");
+            for (Element tableManacost : entry.select("span.value")) {
+                Elements manacost = tableManacost.select("span.number");
                 String manacostText = manacost.text().replaceAll(" ", " \\/ ");
 
                 System.out.println("MANACOST: " + manacostText);
@@ -68,8 +68,8 @@ public class Ability {
         }
 
         for (Element entry : entriesNote) {
-            for (Element test : entry.getElementsByTag("p")) {
-                Elements note = test.select("p");
+            for (Element tableNotes : entry.getElementsByTag("p")) {
+                Elements note = tableNotes.select("p");
 
                 String abilityNotes = note
                         .text()
@@ -80,12 +80,12 @@ public class Ability {
         }
 
         for (Element entry : entriesDescription) {
-                Elements description = entry.select("p");
-                String descriptionText = description
-                        .text()
-                        .toUpperCase();
+            Elements description = entry.select("p");
+            String descriptionText = description
+                    .text()
+                    .toUpperCase();
 
-                System.out.println("ABILITY DESCRIPTION: " + descriptionText);
+            System.out.println("ABILITY DESCRIPTION: " + descriptionText);
         }
 
         for (Element entry : entriesLore) {

@@ -65,6 +65,7 @@ public class PhantomLancer {
     public static void getInfoAboutPhantomLancerFirstAbility() throws IOException {
 
         Document doc = Jsoup.connect(URLAbilities).get();
+
         Element firstAbilityEffects = doc.selectFirst(".effects");
         Element firstAbility = doc.selectFirst(".stats");
         Element firstAbilityCooldown = doc.selectFirst(".cooldown_and_cost");
@@ -163,6 +164,7 @@ public class PhantomLancer {
     public static void getInfoAboutPhantomLancerUltimateAbility() throws IOException {
 
         Document doc = Jsoup.connect(URLAbilities).get();
+
         Elements effects = doc.select(".effects");
         Elements stats = doc.select(".stats");
         Elements cooldown = doc.select(".cooldown_and_cost");
@@ -178,18 +180,27 @@ public class PhantomLancer {
             }
 
             System.out.println(doc.getElementsByTag("header")
-                    .get(3)
+                    .last()
                     .text()
                     .toUpperCase());
 
-            Element ultimateAbilityEffects = effects.get(3);
-            Element ultimateAbility = stats.get(3);
-            Element ultimateAbilityCooldown = cooldown.get(3);
-            Element ultimateAbilityManacost = manacost.get(3);
-            Element ultimateAbilityNotes = notes.get(3);
-            Element ultimateAbilityDescription = description.get(3);
-            Element ultimateAbilityLore = lore.get(3);
-            getAbility(ultimateAbilityEffects, ultimateAbility, ultimateAbilityCooldown, ultimateAbilityManacost, ultimateAbilityNotes, ultimateAbilityDescription, ultimateAbilityLore);
+            Element ultimateAbilityEffects = effects.last();
+            Element ultimateAbilityStats = stats.last();
+            Element ultimateAbilityCooldown = cooldown.last();
+            Element ultimateAbilityManacost = manacost.last();
+            Element ultimateAbilityNotes = notes.last();
+            Element ultimateAbilityDescription = description.last();
+            Element ultimateAbilityLore = lore.last();
+
+            assert ultimateAbilityEffects != null;
+            assert ultimateAbilityStats != null;
+            assert ultimateAbilityCooldown != null;
+            assert ultimateAbilityManacost != null;
+            assert ultimateAbilityNotes != null;
+            assert ultimateAbilityDescription != null;
+            assert ultimateAbilityLore != null;
+
+            getAbility(ultimateAbilityEffects, ultimateAbilityStats, ultimateAbilityCooldown, ultimateAbilityManacost, ultimateAbilityNotes, ultimateAbilityDescription, ultimateAbilityLore);
         }
     }
 

@@ -13,7 +13,10 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-
+//        AntiMage.getInfoAboutAntiMageFirstAbility();
+//        AntiMage.getInfoAboutAntiMageSecondAbility();
+//        AntiMage.getInfoAboutAntiMageThirdAbility();
+//        AntiMage.getInfoAboutAntiMageUltimateAbility();
         PhantomLancer.getInfoAboutPhantomLancerFirstAbility();
         PhantomLancer.getInfoAboutPhantomLancerSecondAbility();
         PhantomLancer.getInfoAboutPhantomLancerThirdAbility();

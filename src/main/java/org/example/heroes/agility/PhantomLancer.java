@@ -65,10 +65,11 @@ public class PhantomLancer {
     public static void getInfoAboutPhantomLancerFirstAbility() throws IOException {
 
         Document doc = Jsoup.connect(URLAbilities).get();
-        Element firstAbilityEffect = doc.selectFirst(".effects");
+        Element firstAbilityEffects = doc.selectFirst(".effects");
         Element firstAbility = doc.selectFirst(".stats");
         Element firstAbilityCooldown = doc.selectFirst(".cooldown_and_cost");
         Element firstAbilityManacost = doc.selectFirst(".cooldown_and_cost");
+        Element firstAbilityNotes = doc.selectFirst(".notes");
         Element firstAbilityDescription = doc.selectFirst(".description");
         Element firstAbilityLore = doc.selectFirst(".lore");
 
@@ -82,12 +83,14 @@ public class PhantomLancer {
                     .text()
                     .toUpperCase());
 
+            assert firstAbilityEffects != null;
             assert firstAbilityCooldown != null;
             assert firstAbilityManacost != null;
+            assert firstAbilityNotes != null;
             assert firstAbilityDescription != null;
             assert firstAbilityLore != null;
 
-            getAbility(firstAbilityEffect, firstAbility, firstAbilityCooldown, firstAbilityManacost, firstAbilityDescription, firstAbilityLore);
+            getAbility(firstAbilityEffects, firstAbility, firstAbilityCooldown, firstAbilityManacost, firstAbilityNotes, firstAbilityDescription, firstAbilityLore);
         }
     }
 
@@ -98,6 +101,7 @@ public class PhantomLancer {
         Elements stats = doc.select(".stats");
         Elements cooldown = doc.select(".cooldown_and_cost");
         Elements manacost = doc.select(".cooldown_and_cost");
+        Elements notes = doc.select(".notes");
         Elements description = doc.select(".description");
         Elements lore = doc.select(".lore");
 
@@ -112,13 +116,14 @@ public class PhantomLancer {
                     .text()
                     .toUpperCase());
 
-            Element secondEffects = effects.get(1);
+            Element secondAbilityEffects = effects.get(1);
             Element secondAbility = stats.get(1);
             Element secondAbilityCooldown = cooldown.get(1);
             Element secondAbilityManacost = manacost.get(1);
+            Element secondAbilityNotes = notes.get(1);
             Element secondAbilityDescription = description.get(1);
             Element secondAbilityLore = lore.get(1);
-            getAbility(secondEffects, secondAbility, secondAbilityCooldown, secondAbilityManacost, secondAbilityDescription, secondAbilityLore);
+            getAbility(secondAbilityEffects, secondAbility, secondAbilityCooldown, secondAbilityManacost, secondAbilityNotes, secondAbilityDescription, secondAbilityLore);
         }
     }
 
@@ -129,6 +134,7 @@ public class PhantomLancer {
         Elements stats = doc.select(".stats");
         Elements cooldown = doc.select(".cooldown_and_cost");
         Elements manacost = doc.select(".cooldown_and_cost");
+        Elements notes = doc.select(".notes");
         Elements description = doc.select(".description");
         Elements lore = doc.select(".lore");
 
@@ -143,13 +149,14 @@ public class PhantomLancer {
                     .text()
                     .toUpperCase());
 
-            Element thirdEffects = effects.get(2);
+            Element thirdAbilityEffects = effects.get(2);
             Element thirdAbility = stats.get(2);
             Element thirdAbilityCooldown = cooldown.get(2);
             Element thirdAbilityManacost = manacost.get(2);
+            Element thirdAbilityNotes = notes.get(2);
             Element thirdAbilityDescription = description.get(2);
             Element thirdAbilityLore = lore.get(2);
-            getAbility(thirdEffects, thirdAbility, thirdAbilityCooldown, thirdAbilityManacost, thirdAbilityDescription, thirdAbilityLore);
+            getAbility(thirdAbilityEffects, thirdAbility, thirdAbilityCooldown, thirdAbilityManacost, thirdAbilityNotes, thirdAbilityDescription, thirdAbilityLore);
         }
     }
 
@@ -160,6 +167,7 @@ public class PhantomLancer {
         Elements stats = doc.select(".stats");
         Elements cooldown = doc.select(".cooldown_and_cost");
         Elements manacost = doc.select(".cooldown_and_cost");
+        Elements notes = doc.select(".notes");
         Elements description = doc.select(".description");
         Elements lore = doc.select(".lore");
 
@@ -178,9 +186,10 @@ public class PhantomLancer {
             Element ultimateAbility = stats.get(3);
             Element ultimateAbilityCooldown = cooldown.get(3);
             Element ultimateAbilityManacost = manacost.get(3);
+            Element ultimateAbilityNotes = notes.get(3);
             Element ultimateAbilityDescription = description.get(3);
             Element ultimateAbilityLore = lore.get(3);
-            getAbility(ultimateAbilityEffects, ultimateAbility, ultimateAbilityCooldown, ultimateAbilityManacost, ultimateAbilityDescription, ultimateAbilityLore);
+            getAbility(ultimateAbilityEffects, ultimateAbility, ultimateAbilityCooldown, ultimateAbilityManacost, ultimateAbilityNotes, ultimateAbilityDescription, ultimateAbilityLore);
         }
     }
 

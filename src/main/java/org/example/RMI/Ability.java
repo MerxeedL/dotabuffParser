@@ -49,7 +49,7 @@ public class Ability {
             Elements values = entry.select("span.values");
             String valueText = values.text();
 
-            System.out.println(labelText.replaceAll("CAST POINT", "CAST POINT: ") + " " + valueText.replaceAll("(\\d+(?:\\.\\d+)?)s", "$1 S"));
+            System.out.println(labelText.replaceAll("CAST POINT", "CAST POINT: ") + valueText.replaceAll("(\\d+(?:\\.\\d+)?)s", "$1 S"));
         }
 
         for (Element entry : entriesCooldown) {

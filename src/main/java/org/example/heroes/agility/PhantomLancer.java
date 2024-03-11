@@ -91,7 +91,7 @@ public class PhantomLancer {
             assert firstAbilityDescription != null;
             assert firstAbilityLore != null;
 
-            getAbility(firstAbilityEffects, firstAbility, firstAbilityCooldown, firstAbilityManacost, firstAbilityNotes, firstAbilityDescription, firstAbilityLore);
+            getAbility(firstAbilityEffects, firstAbilityNotes, firstAbility, firstAbilityCooldown, firstAbilityManacost, firstAbilityDescription, firstAbilityLore);
         }
     }
 
@@ -99,7 +99,7 @@ public class PhantomLancer {
 
         Document doc = Jsoup.connect(URLAbilities).get();
         Elements effects = doc.select(".effects");
-        Elements stats = doc.select(".stats");
+        Elements stats = doc.select("div.stat.effect");
         Elements cooldown = doc.select(".cooldown_and_cost");
         Elements manacost = doc.select(".cooldown_and_cost");
         Elements notes = doc.select(".notes");
@@ -124,7 +124,7 @@ public class PhantomLancer {
             Element secondAbilityNotes = notes.get(1);
             Element secondAbilityDescription = description.get(1);
             Element secondAbilityLore = lore.get(1);
-            getAbility(secondAbilityEffects, secondAbility, secondAbilityCooldown, secondAbilityManacost, secondAbilityNotes, secondAbilityDescription, secondAbilityLore);
+            getAbility(secondAbilityEffects, secondAbilityNotes, secondAbility, secondAbilityCooldown, secondAbilityManacost, secondAbilityDescription, secondAbilityLore);
         }
     }
 
@@ -157,7 +157,7 @@ public class PhantomLancer {
             Element thirdAbilityNotes = notes.get(2);
             Element thirdAbilityDescription = description.get(2);
             Element thirdAbilityLore = lore.get(2);
-            getAbility(thirdAbilityEffects, thirdAbility, thirdAbilityCooldown, thirdAbilityManacost, thirdAbilityNotes, thirdAbilityDescription, thirdAbilityLore);
+            getAbility(thirdAbilityEffects, thirdAbilityNotes, thirdAbility, thirdAbilityCooldown, thirdAbilityManacost, thirdAbilityDescription, thirdAbilityLore);
         }
     }
 
@@ -166,7 +166,7 @@ public class PhantomLancer {
         Document doc = Jsoup.connect(URLAbilities).get();
 
         Elements effects = doc.select(".effects");
-        Elements stats = doc.select(".stats");
+        Elements stats = doc.select("div.stats");
         Elements cooldown = doc.select(".cooldown_and_cost");
         Elements manacost = doc.select(".cooldown_and_cost");
         Elements notes = doc.select(".notes");
@@ -179,28 +179,30 @@ public class PhantomLancer {
                 big.remove();
             }
 
-            System.out.println(doc.getElementsByTag("header")
-                    .last()
-                    .text()
-                    .toUpperCase());
+            for (Element table : doc.select("div.col-8")) {
+                System.out.println(table.getElementsByTag("header")
+                        .last()
+                        .text()
+                        .toUpperCase());
 
-            Element ultimateAbilityEffects = effects.last();
-            Element ultimateAbilityStats = stats.last();
-            Element ultimateAbilityCooldown = cooldown.last();
-            Element ultimateAbilityManacost = manacost.last();
-            Element ultimateAbilityNotes = notes.last();
-            Element ultimateAbilityDescription = description.last();
-            Element ultimateAbilityLore = lore.last();
+                Element ultimateAbilityEffects = effects.last();
+                Element ultimateAbilityNotes = notes.last();
+                Element ultimateAbilityStats = stats.last();
+                Element ultimateAbilityCooldown = cooldown.last();
+                Element ultimateAbilityManacost = manacost.last();
+                Element ultimateAbilityDescription = description.last();
+                Element ultimateAbilityLore = lore.last();
 
-            assert ultimateAbilityEffects != null;
-            assert ultimateAbilityStats != null;
-            assert ultimateAbilityCooldown != null;
-            assert ultimateAbilityManacost != null;
-            assert ultimateAbilityNotes != null;
-            assert ultimateAbilityDescription != null;
-            assert ultimateAbilityLore != null;
+                assert ultimateAbilityEffects != null;
+                assert ultimateAbilityNotes != null;
+                assert ultimateAbilityStats != null;
+                assert ultimateAbilityCooldown != null;
+                assert ultimateAbilityManacost != null;
+                assert ultimateAbilityDescription != null;
+                assert ultimateAbilityLore != null;
 
-            getAbility(ultimateAbilityEffects, ultimateAbilityStats, ultimateAbilityCooldown, ultimateAbilityManacost, ultimateAbilityNotes, ultimateAbilityDescription, ultimateAbilityLore);
+                getAbility(ultimateAbilityEffects, ultimateAbilityNotes, ultimateAbilityStats, ultimateAbilityCooldown, ultimateAbilityManacost, ultimateAbilityDescription, ultimateAbilityLore);
+            }
         }
     }
 

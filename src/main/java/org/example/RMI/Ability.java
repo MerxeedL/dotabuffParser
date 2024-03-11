@@ -8,10 +8,10 @@ public class Ability {
     public static void getAbility(Element effects, Element notes, Element ability, Element cooldownAbility, Element manacostAbility, Element descriptionAbility, Element lore) {
 
         Elements entriesEffects = effects.select(".effects");
+        Elements entriesNote = notes.select(".notes");
         Elements entriesAbility = ability.select("div.stat.effect");
         Elements entriesCooldown = cooldownAbility.select("div.cooldown.align-icon");
         Elements entriesManacost = manacostAbility.select("div.manacost.align-icon");
-        Elements entriesNote = notes.select(".notes");
         Elements entriesDescription = descriptionAbility.select("div.description");
         Elements entriesLore = lore.select("div.lore");
 
@@ -29,17 +29,27 @@ public class Ability {
             }
         }
 
+        for (Element entry : entriesNote) {
+            for (Element tableNotes : entry.getElementsByTag("p")) {
+                Elements note = tableNotes.select("p");
+
+                String abilityNotes = note
+                        .text()
+                        .toUpperCase();
+
+                System.out.println("ABILITY NOTES: " + abilityNotes);
+            }
+        }
+
         for (Element entry : entriesAbility) {
 
-            Element label = entry.selectFirst("span.label");
-            assert label != null;
+            Elements label = entry.select("span.label");
             String labelText = label.text();
 
-            Element values = entry.selectFirst("span.values");
-            assert values != null;
+            Elements values = entry.select("span.values");
             String valueText = values.text();
 
-            System.out.println(labelText + " " + valueText);
+            System.out.println(labelText.replaceAll("CAST POINT", "CAST POINT: ") + " " + valueText.replaceAll("(\\d+(?:\\.\\d+)?)s", "$1 S"));
         }
 
         for (Element entry : entriesCooldown) {
@@ -67,17 +77,6 @@ public class Ability {
             }
         }
 
-        for (Element entry : entriesNote) {
-            for (Element tableNotes : entry.getElementsByTag("p")) {
-                Elements note = tableNotes.select("p");
-
-                String abilityNotes = note
-                        .text()
-                        .toUpperCase();
-
-                System.out.println("ABILITY NOTES: " + abilityNotes);
-            }
-        }
 
         for (Element entry : entriesDescription) {
             Elements description = entry.select("p");
@@ -85,7 +84,9 @@ public class Ability {
                     .text()
                     .toUpperCase();
 
-            System.out.println("ABILITY DESCRIPTION: " + descriptionText);
+            System.out.println("ABILITY DESCRIPTION: " + descriptionText
+                    .replaceAll("\\\\N", " ")
+                    .replaceAll("\\s\\s", " "));
         }
 
         for (Element entry : entriesLore) {

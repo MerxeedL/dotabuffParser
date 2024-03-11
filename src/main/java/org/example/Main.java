@@ -17,10 +17,26 @@ public class Main {
 //        AntiMage.getInfoAboutAntiMageSecondAbility();
 //        AntiMage.getInfoAboutAntiMageThirdAbility();
 //        AntiMage.getInfoAboutAntiMageUltimateAbility();
-        PhantomLancer.getInfoAboutPhantomLancerFirstAbility();
-        PhantomLancer.getInfoAboutPhantomLancerSecondAbility();
-        PhantomLancer.getInfoAboutPhantomLancerThirdAbility();
-        PhantomLancer.getInfoAboutPhantomLancerUltimateAbility();
+        AntiMage.getInfoAboutAntiMageFirstAbility();
+        AntiMage.getInfoAboutAntiMageSecondAbility();
+        AntiMage.getInfoAboutAntiMageThirdAbility();
+        AntiMage.getInfoAboutAntiMageUltimateAbility();
+        AntiMage.getInfoAboutAntiMageOptionalFirstAbility();
+        AntiMage.getInfoAboutAntiMageOptionalSecondAbility();
+
+//        PhantomLancer.getInfoAboutPhantomLancerFirstAbility();
+//        PhantomLancer.getInfoAboutPhantomLancerSecondAbility();
+//        PhantomLancer.getInfoAboutPhantomLancerThirdAbility();
+//        PhantomLancer.getInfoAboutPhantomLancerUltimateAbility();
+
+//        Luna.getInfoAboutLunaFirstAbility();
+//        Luna.getInfoAboutLunaSecondAbility();
+//        Luna.getInfoAboutLunaThirdAbility();
+//        Luna.getInfoAboutLunaUltimateAbility();
+
+
+//        PhantomLancer.getInfoAboutPhantomLancerOptionalFirstAbility();
+//        PhantomLancer.getInfoAboutPhantomLancerOptionalSecondAbility();
 //        AntiMage.getInfoAboutAntiMage();
 //        AntiMage.getInfoAboutAntiMageCounters();
 //        AntiMage.getInfoAboutAntiMageIsCounteredBy();

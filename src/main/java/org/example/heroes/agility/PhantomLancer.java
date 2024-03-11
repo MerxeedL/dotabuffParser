@@ -161,6 +161,72 @@ public class PhantomLancer {
         }
     }
 
+    public static void getInfoAboutPhantomLancerOptionalFirstAbility() throws IOException {
+
+        Document doc = Jsoup.connect(URLAbilities).get();
+        Elements effects = doc.select(".effects");
+        Elements stats = doc.select(".stats");
+        Elements cooldown = doc.select(".cooldown_and_cost");
+        Elements manacost = doc.select(".cooldown_and_cost");
+        Elements notes = doc.select(".notes");
+        Elements description = doc.select(".description");
+        Elements lore = doc.select(".lore");
+
+        if (stats.size() >= 4) {
+
+            for (Element big : doc.getElementsByTag("big")) {
+                big.remove();
+            }
+
+            System.out.println(doc.getElementsByTag("header")
+                    .get(3)
+                    .text()
+                    .toUpperCase());
+
+            Element thirdAbilityEffects = effects.get(3);
+            Element thirdAbility = stats.get(3);
+            Element thirdAbilityCooldown = cooldown.get(3);
+            Element thirdAbilityManacost = manacost.get(3);
+            Element thirdAbilityNotes = notes.get(3);
+            Element thirdAbilityDescription = description.get(3);
+            Element thirdAbilityLore = lore.get(3);
+            getAbility(thirdAbilityEffects, thirdAbilityNotes, thirdAbility, thirdAbilityCooldown, thirdAbilityManacost, thirdAbilityDescription, thirdAbilityLore);
+        }
+    }
+
+    public static void getInfoAboutPhantomLancerOptionalSecondAbility() throws IOException {
+
+        Document doc = Jsoup.connect(URLAbilities).get();
+        Elements effects = doc.select(".effects");
+        Elements stats = doc.select(".stats");
+        Elements cooldown = doc.select(".cooldown_and_cost");
+        Elements manacost = doc.select(".cooldown_and_cost");
+        Elements notes = doc.select(".notes");
+        Elements description = doc.select(".description");
+        Elements lore = doc.select(".lore");
+
+        if (stats.size() >= 5) {
+
+            for (Element big : doc.getElementsByTag("big")) {
+                big.remove();
+            }
+
+            System.out.println(doc.getElementsByTag("header")
+                    .get(4)
+                    .text()
+                    .toUpperCase());
+
+            Element thirdAbilityEffects = effects.get(4);
+            Element thirdAbility = stats.get(4);
+            Element thirdAbilityCooldown = cooldown.get(4);
+            Element thirdAbilityManacost = manacost.get(4);
+            Element thirdAbilityNotes = notes.get(4);
+            Element thirdAbilityDescription = description.get(4);
+            Element thirdAbilityLore = lore.get(4);
+            getAbility(thirdAbilityEffects, thirdAbilityNotes, thirdAbility, thirdAbilityCooldown, thirdAbilityManacost, thirdAbilityDescription, thirdAbilityLore);
+        }
+    }
+
     public static void getInfoAboutPhantomLancerUltimateAbility() throws IOException {
 
         Document doc = Jsoup.connect(URLAbilities).get();

@@ -49,14 +49,14 @@ public class Ability {
             Elements values = entry.select("span.values");
             String valueText = values.text();
 
-            System.out.println(labelText.replaceAll("CAST POINT", "CAST POINT: ") + valueText.replaceAll("(\\d+(?:\\.\\d+)?)s", "$1 S"));
+            System.out.println(labelText.replaceAll("\\s\\s", " ") + " " + valueText.replaceAll("(\\d+(?:\\.\\d+)?)s", "$1 S"));
         }
 
         for (Element entry : entriesCooldown) {
 
             for (Element tableCooldown : entry.select("span.value")) {
                 Elements cooldown = tableCooldown.select("span.number");
-                String cooldownText = cooldown.text().replaceAll(" ", " \\/ ");
+                String cooldownText = cooldown.text().replaceAll("\\s", " \\/ ");
 
                 System.out.println("COOLDOWN: " + cooldownText);
 
@@ -67,7 +67,7 @@ public class Ability {
 
             for (Element tableManacost : entry.select("span.value")) {
                 Elements manacost = tableManacost.select("span.number");
-                String manacostText = manacost.text().replaceAll(" ", " \\/ ");
+                String manacostText = manacost.text().replaceAll("\\s", " \\/ ");
 
                 System.out.println("MANACOST: " + manacostText);
 

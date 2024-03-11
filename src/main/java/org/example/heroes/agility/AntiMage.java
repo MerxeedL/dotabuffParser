@@ -61,6 +61,7 @@ public class AntiMage {
     public static void getInfoAboutAntiMageFirstAbility() throws IOException {
 
         Document doc = Jsoup.connect(URLAbilities).get();
+
         Element firstAbilityEffects = doc.selectFirst(".effects");
         Element firstAbility = doc.selectFirst(".stats");
         Element firstAbilityCooldown = doc.selectFirst(".cooldown_and_cost");
@@ -86,15 +87,16 @@ public class AntiMage {
             assert firstAbilityDescription != null;
             assert firstAbilityLore != null;
 
-            getAbility(firstAbilityEffects, firstAbility, firstAbilityCooldown, firstAbilityManacost, firstAbilityNotes, firstAbilityDescription, firstAbilityLore);
+            getAbility(firstAbilityEffects, firstAbilityNotes, firstAbility, firstAbilityCooldown, firstAbilityManacost, firstAbilityDescription, firstAbilityLore);
         }
     }
 
     public static void getInfoAboutAntiMageSecondAbility() throws IOException {
 
         Document doc = Jsoup.connect(URLAbilities).get();
+
         Elements effects = doc.select(".effects");
-        Elements stats = doc.select(".stats");
+        Elements stats = doc.select("div.stat.effect");
         Elements cooldown = doc.select(".cooldown_and_cost");
         Elements manacost = doc.select(".cooldown_and_cost");
         Elements notes = doc.select(".notes");
@@ -119,13 +121,14 @@ public class AntiMage {
             Element secondAbilityNotes = notes.get(1);
             Element secondAbilityDescription = description.get(1);
             Element secondAbilityLore = lore.get(1);
-            getAbility(secondAbilityEffects, secondAbility, secondAbilityCooldown, secondAbilityManacost, secondAbilityNotes, secondAbilityDescription, secondAbilityLore);
+            getAbility(secondAbilityEffects, secondAbilityNotes, secondAbility, secondAbilityCooldown, secondAbilityManacost, secondAbilityDescription, secondAbilityLore);
         }
     }
 
     public static void getInfoAboutAntiMageThirdAbility() throws IOException {
 
         Document doc = Jsoup.connect(URLAbilities).get();
+
         Elements effects = doc.select(".effects");
         Elements stats = doc.select(".stats");
         Elements cooldown = doc.select(".cooldown_and_cost");
@@ -152,15 +155,84 @@ public class AntiMage {
             Element thirdAbilityNotes = notes.get(2);
             Element thirdAbilityDescription = description.get(2);
             Element thirdAbilityLore = lore.get(2);
-            getAbility(thirdAbilityEffects, thirdAbility, thirdAbilityCooldown, thirdAbilityManacost, thirdAbilityNotes, thirdAbilityDescription, thirdAbilityLore);
+            getAbility(thirdAbilityEffects, thirdAbilityNotes, thirdAbility, thirdAbilityCooldown, thirdAbilityManacost, thirdAbilityDescription, thirdAbilityLore);
+        }
+    }
+
+    public static void getInfoAboutAntiMageOptionalFirstAbility() throws IOException {
+
+        Document doc = Jsoup.connect(URLAbilities).get();
+
+        Elements effects = doc.select(".effects");
+        Elements stats = doc.select(".stats");
+        Elements cooldown = doc.select(".cooldown_and_cost");
+        Elements manacost = doc.select(".cooldown_and_cost");
+        Elements notes = doc.select(".notes");
+        Elements description = doc.select(".description");
+        Elements lore = doc.select(".lore");
+
+        if (stats.size() >= 3) {
+
+            for (Element big : doc.getElementsByTag("big")) {
+                big.remove();
+            }
+
+            System.out.println(doc.getElementsByTag("header")
+                    .get(3)
+                    .text()
+                    .toUpperCase());
+
+            Element thirdAbilityEffects = effects.get(3);
+            Element thirdAbility = stats.get(3);
+            Element thirdAbilityCooldown = cooldown.get(3);
+            Element thirdAbilityManacost = manacost.get(3);
+            Element thirdAbilityNotes = notes.get(3);
+            Element thirdAbilityDescription = description.get(3);
+            Element thirdAbilityLore = lore.get(3);
+            getAbility(thirdAbilityEffects, thirdAbilityNotes, thirdAbility, thirdAbilityCooldown, thirdAbilityManacost, thirdAbilityDescription, thirdAbilityLore);
+        }
+    }
+
+    public static void getInfoAboutAntiMageOptionalSecondAbility() throws IOException {
+
+        Document doc = Jsoup.connect(URLAbilities).get();
+
+        Elements effects = doc.select(".effects");
+        Elements stats = doc.select(".stats");
+        Elements cooldown = doc.select(".cooldown_and_cost");
+        Elements manacost = doc.select(".cooldown_and_cost");
+        Elements notes = doc.select(".notes");
+        Elements description = doc.select(".description");
+        Elements lore = doc.select(".lore");
+
+        if (stats.size() >= 3) {
+
+            for (Element big : doc.getElementsByTag("big")) {
+                big.remove();
+            }
+
+            System.out.println(doc.getElementsByTag("header")
+                    .get(4)
+                    .text()
+                    .toUpperCase());
+
+            Element thirdAbilityEffects = effects.get(4);
+            Element thirdAbility = stats.get(4);
+            Element thirdAbilityCooldown = cooldown.get(4);
+            Element thirdAbilityManacost = manacost.get(4);
+            Element thirdAbilityNotes = notes.get(4);
+            Element thirdAbilityDescription = description.get(4);
+            Element thirdAbilityLore = lore.get(4);
+            getAbility(thirdAbilityEffects, thirdAbilityNotes, thirdAbility, thirdAbilityCooldown, thirdAbilityManacost, thirdAbilityDescription, thirdAbilityLore);
         }
     }
 
     public static void getInfoAboutAntiMageUltimateAbility() throws IOException {
 
         Document doc = Jsoup.connect(URLAbilities).get();
+
         Elements effects = doc.select(".effects");
-        Elements stats = doc.select(".stats");
+        Elements stats = doc.select("div.stats");
         Elements cooldown = doc.select(".cooldown_and_cost");
         Elements manacost = doc.select(".cooldown_and_cost");
         Elements notes = doc.select(".notes");
@@ -173,19 +245,30 @@ public class AntiMage {
                 big.remove();
             }
 
-            System.out.println(doc.getElementsByTag("header")
-                    .get(3)
-                    .text()
-                    .toUpperCase());
+            for (Element table : doc.select("div.col-8")) {
+                System.out.println(table.getElementsByTag("header")
+                        .last()
+                        .text()
+                        .toUpperCase());
 
-            Element ultimateAbilityEffects = effects.get(3);
-            Element ultimateAbility = stats.get(3);
-            Element ultimateAbilityCooldown = cooldown.get(3);
-            Element ultimateAbilityManacost = manacost.get(3);
-            Element ultimateAbilityNotes = notes.get(3);
-            Element ultimateAbilityDescription = description.get(3);
-            Element ultimateAbilityLore = lore.get(3);
-            getAbility(ultimateAbilityEffects, ultimateAbility, ultimateAbilityCooldown, ultimateAbilityManacost, ultimateAbilityNotes, ultimateAbilityDescription, ultimateAbilityLore);
+                Element ultimateAbilityEffects = effects.last();
+                Element ultimateAbilityNotes = notes.last();
+                Element ultimateAbilityStats = stats.last();
+                Element ultimateAbilityCooldown = cooldown.last();
+                Element ultimateAbilityManacost = manacost.last();
+                Element ultimateAbilityDescription = description.last();
+                Element ultimateAbilityLore = lore.last();
+
+                assert ultimateAbilityEffects != null;
+                assert ultimateAbilityNotes != null;
+                assert ultimateAbilityStats != null;
+                assert ultimateAbilityCooldown != null;
+                assert ultimateAbilityManacost != null;
+                assert ultimateAbilityDescription != null;
+                assert ultimateAbilityLore != null;
+
+                getAbility(ultimateAbilityEffects, ultimateAbilityNotes, ultimateAbilityStats, ultimateAbilityCooldown, ultimateAbilityManacost, ultimateAbilityDescription, ultimateAbilityLore);
+            }
         }
     }
 

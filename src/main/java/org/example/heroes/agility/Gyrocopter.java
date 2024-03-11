@@ -9,9 +9,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.example.RMI.Ability.getAbility;
+
 public class Gyrocopter {
     private static final String URLLogs = "https://dota2.fandom.com/ru/wiki/Gyrocopter/Изменения";
     private static final String URLTalents = "https://dota2.fandom.com/ru/wiki/Gyrocopter/Таланты";
+    private static final String URLAbilities = "https://www.dotabuff.com/heroes/gyrocopter/abilities";
     public static void getInfoAboutGyrocopter() throws IOException {
         Document doc = Jsoup.connect("https://www.dotabuff.com/heroes/gyrocopter").get();
 
@@ -52,6 +55,150 @@ public class Gyrocopter {
         }
         for (int i = list.size() - 1; i >= list.size() - 5; i--) {
             System.out.println(list.get(i));
+        }
+    }
+
+    public static void getInfoAboutGyrocopterFirstAbility() throws IOException {
+
+        Document doc = Jsoup.connect(URLAbilities).get();
+
+        Element firstAbilityEffects = doc.selectFirst(".effects");
+        Element firstAbility = doc.selectFirst(".stats");
+        Element firstAbilityCooldown = doc.selectFirst(".cooldown_and_cost");
+        Element firstAbilityManacost = doc.selectFirst(".cooldown_and_cost");
+        Element firstAbilityNotes = doc.selectFirst(".notes");
+        Element firstAbilityDescription = doc.selectFirst(".description");
+        Element firstAbilityLore = doc.selectFirst(".lore");
+
+        if (firstAbility != null) {
+
+            for (Element big : doc.getElementsByTag("big")) {
+                big.remove();
+            }
+
+            System.out.println(doc.selectFirst("header")
+                    .text()
+                    .toUpperCase());
+
+            assert firstAbilityEffects != null;
+            assert firstAbilityCooldown != null;
+            assert firstAbilityManacost != null;
+            assert firstAbilityNotes != null;
+            assert firstAbilityDescription != null;
+            assert firstAbilityLore != null;
+
+            getAbility(firstAbilityEffects, firstAbilityNotes, firstAbility, firstAbilityCooldown, firstAbilityManacost, firstAbilityDescription, firstAbilityLore);
+        }
+    }
+
+    public static void getInfoAboutGyrocopterSecondAbility() throws IOException {
+
+        Document doc = Jsoup.connect(URLAbilities).get();
+        Elements effects = doc.select(".effects");
+        Elements stats = doc.select("div.stat.effect");
+        Elements cooldown = doc.select(".cooldown_and_cost");
+        Elements manacost = doc.select(".cooldown_and_cost");
+        Elements notes = doc.select(".notes");
+        Elements description = doc.select(".description");
+        Elements lore = doc.select(".lore");
+
+        if (stats.size() >= 2) {
+
+            for (Element big : doc.getElementsByTag("big")) {
+                big.remove();
+            }
+
+            System.out.println(doc.getElementsByTag("header")
+                    .get(1)
+                    .text()
+                    .toUpperCase());
+
+            Element secondAbilityEffects = effects.get(1);
+            Element secondAbility = stats.get(1);
+            Element secondAbilityCooldown = cooldown.get(1);
+            Element secondAbilityManacost = manacost.get(1);
+            Element secondAbilityNotes = notes.get(1);
+            Element secondAbilityDescription = description.get(1);
+            Element secondAbilityLore = lore.get(1);
+            getAbility(secondAbilityEffects, secondAbilityNotes, secondAbility, secondAbilityCooldown, secondAbilityManacost, secondAbilityDescription, secondAbilityLore);
+        }
+    }
+
+    public static void getInfoAboutGyrocopterThirdAbility() throws IOException {
+
+        Document doc = Jsoup.connect(URLAbilities).get();
+        Elements effects = doc.select(".effects");
+        Elements stats = doc.select(".stats");
+        Elements cooldown = doc.select(".cooldown_and_cost");
+        Elements manacost = doc.select(".cooldown_and_cost");
+        Elements notes = doc.select(".notes");
+        Elements description = doc.select(".description");
+        Elements lore = doc.select(".lore");
+
+        if (stats.size() >= 3) {
+
+            for (Element big : doc.getElementsByTag("big")) {
+                big.remove();
+            }
+
+            System.out.println(doc.getElementsByTag("header")
+                    .get(2)
+                    .text()
+                    .toUpperCase());
+
+            Element thirdAbilityEffects = effects.get(2);
+            Element thirdAbility = stats.get(2);
+            Element thirdAbilityCooldown = cooldown.get(2);
+            Element thirdAbilityManacost = manacost.get(2);
+            Element thirdAbilityNotes = notes.get(2);
+            Element thirdAbilityDescription = description.get(2);
+            Element thirdAbilityLore = lore.get(2);
+            getAbility(thirdAbilityEffects, thirdAbilityNotes, thirdAbility, thirdAbilityCooldown, thirdAbilityManacost, thirdAbilityDescription, thirdAbilityLore);
+        }
+    }
+
+    public static void getInfoAboutGyrocopterUltimateAbility() throws IOException {
+
+        Document doc = Jsoup.connect(URLAbilities).get();
+
+        Elements effects = doc.select(".effects");
+        Elements stats = doc.select("div.stats");
+        Elements cooldown = doc.select(".cooldown_and_cost");
+        Elements manacost = doc.select(".cooldown_and_cost");
+        Elements notes = doc.select(".notes");
+        Elements description = doc.select(".description");
+        Elements lore = doc.select(".lore");
+
+        if (stats.size() >= 4) {
+
+            for (Element big : doc.getElementsByTag("big")) {
+                big.remove();
+            }
+
+            for (Element table : doc.select("div.col-8")) {
+                System.out.println(table.getElementsByTag("header")
+                        .last()
+                        .text()
+                        .toUpperCase());
+
+                Element ultimateAbilityEffects = effects.last();
+                Element ultimateAbilityNotes = notes.last();
+                Element ultimateAbilityStats = stats.last();
+                Element ultimateAbilityCooldown = cooldown.last();
+                Element ultimateAbilityManacost = manacost.last();
+                Element ultimateAbilityDescription = description.last();
+                Element ultimateAbilityLore = lore.last();
+
+                assert ultimateAbilityEffects != null;
+                assert ultimateAbilityNotes != null;
+                assert ultimateAbilityStats != null;
+                assert ultimateAbilityCooldown != null;
+                assert ultimateAbilityManacost != null;
+                assert ultimateAbilityDescription != null;
+                assert ultimateAbilityLore != null;
+
+                getAbility(ultimateAbilityEffects, ultimateAbilityNotes, ultimateAbilityStats, ultimateAbilityCooldown, ultimateAbilityManacost, ultimateAbilityDescription, ultimateAbilityLore);
+            }
         }
     }
 

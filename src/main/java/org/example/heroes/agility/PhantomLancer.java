@@ -99,7 +99,7 @@ public class PhantomLancer {
 
         Document doc = Jsoup.connect(URLAbilities).get();
         Elements effects = doc.select(".effects");
-        Elements stats = doc.select("div.stat.effect");
+        Elements stats = doc.select(".stats");
         Elements cooldown = doc.select(".cooldown_and_cost");
         Elements manacost = doc.select(".cooldown_and_cost");
         Elements notes = doc.select(".notes");
